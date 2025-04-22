@@ -1,31 +1,13 @@
 # initialising
-sum = 12
-done = False
-pythag = ()
+sum = 1000
+status = True
 
-for a in range(1, sum - 1):  # a < b
-    for b in range(a + 1, sum):  # b < c
-        for c in range(b + 1, sum + 1):  # largest number can at most be the sum
-            if a**2 + b**2 < c**2:
-                break
+while status:
+    for a in range(1, sum -1):
+        for b in range(a+1, sum):
+            c = sum - a - b  # we already know a + b + c = 1000 so we can test only possible values of c
+            if a**2 + b**2 == c**2:  # checking if this is a pythagorean triplet
+                status = False  # if this is we can stop the while loop
+                product = a * b * c
 
-            if a**2 + b**2 == c**2:
-                pythag = (a, b, c)
-
-                if a + b + c == sum:
-                    done = True
-                    break
-        
-        if a + b + c > sum:
-            break
-
-        if done == True:
-            break
-    
-    if a + b + c > sum:
-        break
-
-    if done == True:
-        break
-
-print(pythag)
+print(product)
