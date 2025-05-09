@@ -1,0 +1,9 @@
+
+def checkRepeat(n):
+
+
+
+for d in range(1000):
+    recip = 1/d
+
+'''unfinished'''
