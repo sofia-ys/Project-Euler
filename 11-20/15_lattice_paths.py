@@ -1,18 +1,10 @@
-import numpy as np
+from math import factorial as f
 
-def moveRight(pos, grid):
-    if 0 <= pos[1] < (len(grid[0]) - 1):
-        pos[1] = pos[1] + 1
-    return pos
+gridsize = 20
+# the number of moves is essentially how many combinations we can get from 2*n total moves (n right, n down) taking n at a time
+# how many ways can you choose positions for 3 rights (or 3 downs) in a 6 move sequence?
+# aka, which 3 of the total 6 moves are right? (the rest is just down)
+# nCr = n! / (r! (n-r)!)
+moves = int(f(2 * gridsize) / (f(gridsize) * f(2 * gridsize - gridsize)))
 
-def moveDown(pos, grid):
-    if 0 <= pos[0] < (len(grid) - 1):
-        pos[0] = pos[0] + 1
-    return pos
-
-pos = [0,0]
-gridSize = 2
-grid = np.ones((gridSize, gridSize))
-routes = 0
-
-'''unfinished'''
+print(moves)
