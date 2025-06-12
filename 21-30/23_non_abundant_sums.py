@@ -1,29 +1,29 @@
 import math
 
 def abundant(n):  # function to determine whether a number is abundant
-    divisors = []
-    for i in range(2, math.ceil(math.sqrt(n))):
+    divisors = {1}  # always includes 1, that way we can skip to checking from 2
+    for i in range(2, int(math.sqrt(n)) + 1):
         if n % i == 0:  # checking if it divides without remainder
-            divisors.extend((i, n/i))  # adding it to our divisors list
-    return n < (sum(divisors) + 1)  # a number is abundant if it is less than the sum of its divisors
+            divisors.add(i)
+            divisors.add(n//i)  # adding it to our divisors list
+    return n < (sum(divisors))  # a number is abundant if it is less than the sum of its divisors
 
-def check_sum(n, abundant_nums):
-    for num1 in abundant_nums:
-        for num2 in abundant_nums:
-            if n == num1 + num2:
-                return True
+upper_limit = 28123
 
 abundant_nums = []
-not_abundant = []
-for i in range(28123):
+for i in range(1, upper_limit + 1):  # +1 because the integer 28123 could be 28122 + 1 or something
     if abundant(i):
         abundant_nums.append(i)
-    else:
-        not_abundant.append(i)
 
-not_sum = []
-for num in not_abundant:
-    if not check_sum(num, abundant_nums):
-        not_sum.append(num)
+abundant_sums = set()  # sums of all abundnat numbers
+for j in range(len(abundant_nums)):
+    for k in range(j, len(abundant_nums)):  # since same lsit, we can half the comparisons
+        if abundant_nums[j] + abundant_nums[k] <= upper_limit:
+            abundant_sums.add(abundant_nums[j] + abundant_nums[k])
 
-print(len(not_sum))
+not_sum = set()
+for n in range(1, upper_limit + 1):
+    if n not in abundant_sums:
+        not_sum.add(n)
+
+print(sum(not_sum))

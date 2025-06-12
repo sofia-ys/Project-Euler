@@ -1,9 +1,16 @@
 
-def checkRepeat(n):
+# def checkRepeat(n):
+#     recip = str(1/n)
+#     for i, digit in enumerate(recip):
+#         j = 1
+#         while True:
+#             if recip[j] == digit:
+#                 checkRepeat()
 
 
 
-for d in range(1000):
-    recip = 1/d
 
-'''unfinished'''
+# for d in range(1000):
+#     recip = 1/d
+
+# '''unfinished'''

@@ -1,7 +1,6 @@
 import math
 numbers = [0, 1, 2]
+# possible number of permutations is len(numbers)!
 
-def permutation(numbers):
-    for i in range(math.factorial(len(numbers))):
-
-'''unfinished'''
+# for i in range(math.factorial(len(numbers))):
+    
